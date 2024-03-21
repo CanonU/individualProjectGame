@@ -52,14 +52,15 @@ target_image = pygame.image.load("images/target.png")
 #Main Game loop
 while play:
     screen.fill((255, 255, 255))
-    targetButton = Target(100, 300, pebblebutton1_image, pebbleclick)
+    targetButton = Target(100, 300, target_image, targetfunc)
     if timeScore >= 10:
         timeRender = font.render(f"Time: {minuteScore}:{timeScore}", True, (0, 0, 0))
-    if timeScore <= 10:
+    if timeScore <= 9:
         timeRender = font.render(f"Time: {minuteScore}:0{timeScore}", True, (0, 0, 0))
     for event in pygame.event.get():
         if event.type == pygame.QUIT:
             play = False
+        targetButton.handle_event(event)
 
      # Check the elapsed time for the timer
     current_time += clock.get_rawtime()

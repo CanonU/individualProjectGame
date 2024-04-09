@@ -1,12 +1,11 @@
 #Canon Unguren
 import pygame
 import random
-from target import Target
+from experience import Orb
 from circle import Circle
 mousex, mousey = pygame.mouse.get_pos()
 timeScore = 0
 minuteScore =0
-targetScore = 0
 play = False
 #Initialize timer variables
 current_time = 0
@@ -88,7 +87,6 @@ while play:
             timeScore -= 60
             minuteScore += 1
         print(f"TimeScore: {minuteScore}:{timeScore}")
-        print(f"DodgeScore: {circle.dodgescore}")
         current_time = 0
 
     screen.blit(timeRender,(10,10))

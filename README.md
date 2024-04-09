@@ -18,6 +18,3 @@ My goal for this project is to create a game that gets more and more complicated
 ![startscreen]()
 ### Gameplay
 ![gameplay]()
-## Sprites
-#### SpriteName
-![SpriteName]()

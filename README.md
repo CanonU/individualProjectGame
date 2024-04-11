@@ -5,8 +5,7 @@ A stage based reaction game with increasing difficulty Until you fail.
 Canon Unguren - coder
 
 ### Project Objective
-My goal for this project is to create a reaction based game where you avoid circles. As the game progresses the amount of circles will increase. I am hoping to add a leveling system with experience "orbs" that appear around the screen that increase your xp and at the level up, you unlock various skills that can increase your chance of survival. 
-
+My goal for this project is to create a reaction based game where you avoid circles. As the game progresses the amount of circles will increase. It will have a countdown that can only be restored by collecting time stuff that shows up around the screen 
 
 ### UI and Logic Planning
 ![start]()

@@ -14,10 +14,6 @@ circle_count = 50
 circles = [Circle() for _ in range(circle_count)]
 size = 10
 
-def targetfunc():
-    global targetScore
-    targetScore += 1
-    targetButton.x = random.randint(50,450)
 
     
 pygame.init()
@@ -46,15 +42,17 @@ while not play:
     for event in pygame.event.get():
         if event.type == pygame.MOUSEBUTTONDOWN and event.button == 1:
             play = True
+            pygame.mouse.set_visible(False)
 
 
 
-target_image = pygame.image.load("images/target.png")
+
+
 #Main Game loop
 while play:
     #pygame.mouse.set_visible(False)
     screen.fill((255, 255, 255))
-    targetButton = Target(100, 300, target_image, targetfunc)
+
     if timeScore >= 10:
         timeRender = font.render(f"Time: {minuteScore}:{timeScore}", True, (0, 0, 0))
     if timeScore <= 9:
@@ -62,7 +60,6 @@ while play:
     for event in pygame.event.get():
         if event.type == pygame.QUIT:
             play = False
-        targetButton.handle_event(event)
         if event.type == pygame.MOUSEMOTION:
             mousex, mousey = pygame.mouse.get_pos()
     pygame.draw.circle(screen,(0,0,0),(mousex,mousey), size)

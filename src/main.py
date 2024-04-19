@@ -1,5 +1,6 @@
 #Canon Unguren
 import pygame
+import math
 import random
 from experience import Orb
 from circle import Circle
@@ -8,9 +9,12 @@ timeScore = 0
 minuteScore =0
 play = False
 #Initialize timer variables
+score = 0
 current_time = 0
 timer_interval = 75
-circle_count = 50
+circle_count = 5
+Orb_count = 3
+Orbs= [Orb() for _ in range(Orb_count)]
 circles = [Circle() for _ in range(circle_count)]
 size = 10
 
@@ -70,9 +74,20 @@ while play:
 
         mousex, mousey = pygame.mouse.get_pos()
         #if circle.x +circle.radius > mousex-size+2 and circle.x -circle.radius < mousex+size-2 and circle.y +circle.radius > mousey-size+2 and circle.y -circle.radius < mousey+size-2:
-        distance = ((circle.x-(mousex-size))**2 + (circle.y - (mousey-size))**2)**0.5
+        distance = math.sqrt((circle.x - (mousex-size))**2 + (circle.y - (mousey-size))**2)
         if distance <= circle.radius:
             play = False
+    for orb in Orbs:
+        orb.draw(screen)
+        mousex, mousey = pygame.mouse.get_pos()
+        distance = math.sqrt((orb.x-orb.radius - (mousex-size))**2 + (orb.y-orb.radius - (mousey-size))**2)
+        if distance <= orb.radius:
+            score+=1
+            print(score)
+            orb.x = random.randint(orb.radius, pygame.display.Info().current_w - orb.radius)
+            orb.y = random.randint(orb.radius, pygame.display.Info().current_h - orb.radius)
+
+            
      # Check the elapsed time for the timer
     current_time += clock.get_rawtime()
     clock.tick()
@@ -80,6 +95,7 @@ while play:
     # Update score every second
     if current_time >= timer_interval:
         timeScore += 1
+        
         if timeScore >= 60:
             timeScore -= 60
             minuteScore += 1

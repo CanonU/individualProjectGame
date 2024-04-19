@@ -40,8 +40,9 @@ class Circle:
     
   #make the circle visible
   def draw(self, screen):
-        pygame.draw.circle(screen, self.color, (self.x, self.y), self.radius)
-
+    pygame.draw.circle(screen, (0, 0, 0), (self.x, self.y), self.radius + 2)
+    # Draw the inner circle with color
+    pygame.draw.circle(screen, self.color, (self.x, self.y), self.radius)
     
     
   #circle movement

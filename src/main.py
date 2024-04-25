@@ -25,6 +25,7 @@ increaseCircleCount = 0
     
 #pygame.init()
 screen = pygame.display.set_mode((pygame.display.Info().current_w-300,pygame.display.Info().current_h-300))
+
 clock = pygame.time.Clock()
 font = pygame.font.Font(None, 25)
 font2 = pygame.font.Font(None,20)
@@ -90,12 +91,14 @@ while play:
             score+=1
             increaseCircleCount +=1
             print(score)
-            orb.x = random.randint(orb.radius, pygame.display.Info().current_w - orb.radius)
-            orb.y = random.randint(orb.radius, pygame.display.Info().current_h - orb.radius)
-            if increaseCircleCount >=5:
+            orb.x = random.randint(orb.radius, pygame.display.Info().current_w - orb.size)
+            orb.y = random.randint(orb.radius, pygame.display.Info().current_h - orb.size)
+            if increaseCircleCount >=10:
                 increaseCircleCount = 0
                 level +=1
-                circle_count+=1
+                circle_count+=10
+                circles = [Circle() for _ in range(circle_count)]
+                
 
                 
         #Check the elapsed time for the timer

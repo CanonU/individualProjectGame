@@ -13,13 +13,14 @@ pygame.init()
 score = 0
 current_time = 0
 timer_interval = 75
-circle_count = 50
-Orb_count = 3
+circle_count = 10
+Orb_count = 5
 level = 0
 Orbs= [Orb() for _ in range(Orb_count)]
 circles = [Circle() for _ in range(circle_count)]
 size = 10
 increaseCircleCount = 0
+waiting = False
 
 
     
@@ -29,6 +30,7 @@ screen = pygame.display.set_mode((pygame.display.Info().current_w-300,pygame.dis
 clock = pygame.time.Clock()
 font = pygame.font.Font(None, 25)
 font2 = pygame.font.Font(None,20)
+font3 = pygame.font.Font(None,40)
 
 # Start Screen 
 while not play:
@@ -58,6 +60,20 @@ while not play:
 
 #Main Game loop
 while play:
+    
+    while waiting == True:
+        pygame.mouse.set_visible(True)
+        for event in pygame.event.get():
+            if event.type == pygame.QUIT:
+                waiting = False
+                play = False
+                break
+            elif event.type == pygame.KEYDOWN and event.key == pygame.K_SPACE:
+                waiting = False
+                pygame.mouse.set_visible(False)
+                break
+
+    
     #pygame.mouse.set_visible(False)
     screen.fill((255, 255, 255))
 
@@ -69,7 +85,10 @@ while play:
     for event in pygame.event.get():
         if event.type == pygame.QUIT:
             play = False
-        if event.type == pygame.MOUSEMOTION:
+        elif event.type == pygame.KEYDOWN:
+            if event.key == pygame.K_SPACE:
+                waiting = True
+        elif event.type == pygame.MOUSEMOTION:
             mousex, mousey = pygame.mouse.get_pos()
     pygame.draw.circle(screen,(0,0,0),(mousex,mousey), size)
 
@@ -83,17 +102,18 @@ while play:
         if distance <= circle.radius+size:
             play = False
     for orb in Orbs:
-        print(orb.x,orb.y)
         orb.draw(screen)
         mousex, mousey = pygame.mouse.get_pos()
         distance = math.sqrt((orb.x - mousex)**2 + (orb.y - mousey)**2)
         if distance <= orb.size/2+size:
             score+=1
             increaseCircleCount +=1
-            print(score)
+            print(score, level)
+            #orb.x = mousex
+            #orb.y = mousey
             orb.x = random.randint(orb.size, pygame.display.Info().current_w - orb.size)
             orb.y = random.randint(orb.size, pygame.display.Info().current_h - orb.size)
-            if increaseCircleCount >=10:
+            if increaseCircleCount >=5:
                 increaseCircleCount = 0
                 level +=1
                 for _ in range(10):
@@ -112,6 +132,7 @@ while play:
         if timeScore >= 60:
             timeScore -= 60
             minuteScore += 1
+            
         print(f"TimeScore: {minuteScore}:{timeScore}")
         current_time = 0
 

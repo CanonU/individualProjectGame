@@ -65,7 +65,7 @@ while play:
         timeRender = font.render(f"Time: {minuteScore}:{timeScore}", True, (0, 0, 0))
     if timeScore <= 9:
         timeRender = font.render(f"Time: {minuteScore}:0{timeScore}", True, (0, 0, 0))
-    levelRender = font.render(f"Level(xp):{level}({level*5})",True,(0,0,0))
+    levelRender = font.render(f"Level(xp):{level}({score})",True,(0,0,0))
     for event in pygame.event.get():
         if event.type == pygame.QUIT:
             play = False
@@ -87,17 +87,17 @@ while play:
         orb.draw(screen)
         mousex, mousey = pygame.mouse.get_pos()
         distance = math.sqrt((orb.x - mousex)**2 + (orb.y - mousey)**2)
-        if distance <= orb.radius+size:
+        if distance <= orb.size/2+size:
             score+=1
             increaseCircleCount +=1
             print(score)
-            orb.x = random.randint(orb.radius, pygame.display.Info().current_w - orb.size)
-            orb.y = random.randint(orb.radius, pygame.display.Info().current_h - orb.size)
+            orb.x = random.randint(orb.size, pygame.display.Info().current_w - orb.size)
+            orb.y = random.randint(orb.size, pygame.display.Info().current_h - orb.size)
             if increaseCircleCount >=10:
                 increaseCircleCount = 0
                 level +=1
-                circle_count+=10
-                circles = [Circle() for _ in range(circle_count)]
+                for _ in range(10):
+                    circles.append(Circle())
                 
 
                 

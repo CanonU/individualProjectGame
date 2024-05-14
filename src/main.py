@@ -185,6 +185,7 @@ while play:
     pygame.display.update()
 screen.fill((255, 255, 255))
 end= False
+pygame.mouse.set_visible(True)
 screen.fill((255,255,255))
 welcome = startfont.render("Unfortunately you have perished", True, (0, 0, 0))
 begin_text = font3.render("Click to end", True, (0, 0, 0))

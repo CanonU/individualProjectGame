@@ -3,6 +3,7 @@ import pygame
 import math
 import random
 import time
+import sys
 from experience import Orb
 from circle import Circle
 mousex, mousey = pygame.mouse.get_pos()
@@ -87,14 +88,16 @@ while not play:
         play = True
         pygame.mouse.set_visible(False)
 
-
+    pygame.display.update()
     # Check for mouse click to start the game
     for event in pygame.event.get():
         if event.type == pygame.MOUSEBUTTONDOWN and event.button == 1:
             instruction += 1
         elif event.type == pygame.QUIT:
-            play = True
-    pygame.display.update()
+            pygame.display.quit()
+            pygame.quit()
+            sys.exit()
+
 
 
 
@@ -105,9 +108,9 @@ while play:
         pygame.mouse.set_visible(True)
         for event in pygame.event.get():
             if event.type == pygame.QUIT:
-                waiting = False
-                play = False
-                break
+                pygame.display.quit()
+                pygame.quit()
+                sys.exit()
             elif event.type == pygame.KEYDOWN and event.key == pygame.K_SPACE:
                 waiting = False
                 pygame.mouse.set_visible(False)

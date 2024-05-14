@@ -8,7 +8,7 @@ Canon Unguren - coder
 My goal is to create a reaction based, level up game that increasingly gets more difficult. I want to make them avoid circles that appear around the screen. 
 
 ### UI and Logic Planning
-![start]()
+![start](https://github.com/CanonU/individualProjectGame/blob/main/images/StartScreen.png?raw=true)
 ![gameplay]()
 ![Lose]()
 ### Class Diagram

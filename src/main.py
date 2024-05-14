@@ -2,6 +2,7 @@
 import pygame
 import math
 import random
+import time
 from experience import Orb
 from circle import Circle
 mousex, mousey = pygame.mouse.get_pos()
@@ -27,34 +28,73 @@ waiting = False
 #pygame.init()
 screen = pygame.display.set_mode((pygame.display.Info().current_w-300,pygame.display.Info().current_h-300))
 
+
 clock = pygame.time.Clock()
+startfont = pygame.font.Font(None, 100)
 font = pygame.font.Font(None, 25)
 font2 = pygame.font.Font(None,20)
 font3 = pygame.font.Font(None,40)
-
+instruction = 0
 # Start Screen 
 while not play:
-    for event in pygame.event.get():
-        if event.type == pygame.QUIT:
-            play = True
 
     screen.fill((255, 255, 255))
+    if instruction == 0:
+        welcome = startfont.render("No Pain No Game", True, (0, 0, 0))
+        screen.blit(welcome, (175, 250))
+        begin_text = font3.render("Click anywhere to start instructions", True, (0, 0, 0))
+        screen.blit(begin_text, (175, 400))
+    elif instruction == 1:
+        screen.fill((255,255,255))
+        welcome = startfont.render("In this game you are a ball", True, (0, 0, 0))
+        pygame.draw.circle(screen,(0,0,0),(100,300), size)
+        otherText = font.render("you are this ball",True, (0,0,0))
+        begin_text = font3.render("Click anywhere to continue", True, (0, 0, 0))
+        screen.blit(begin_text, (175, 400))
+        screen.blit(welcome, (175, 250))
+        screen.blit(otherText, (45, 250))
+        pygame.display.update()
+    elif instruction == 2:
+        screen.fill((255,255,255))
+        welcome = startfont.render("Your goal is to avoid the other balls", True, (0, 0, 0))
+        begin_text = font3.render("Click anywhere to continue", True, (0, 0, 0))
+        screen.blit(begin_text, (175, 400))
+        screen.blit(welcome, (175, 250))
+    elif instruction == 3:
+        screen.fill((255,255,255))
+        welcome_line1 = startfont.render("While collecting the squares found around", True, (0, 0, 0))
+        welcome_line2 = startfont.render("the map", True, (0, 0, 0))
+        begin_text = font3.render("Click anywhere to continue", True, (0, 0, 0))
+        screen.blit(begin_text, (175, 400))
+        screen.blit(welcome_line1, (175, 250))
+        screen.blit(welcome_line2, (175, 310))
+    elif instruction == 4:
+        screen.fill((255,255,255))
+        welcome_line1 = startfont.render("But every 5 of them you collect increases", True, (0, 0, 0))
+        welcome_line2 = startfont.render("the amount of balls by 10", True, (0, 0, 0))
+        begin_text = font3.render("Click anywhere to continue", True, (0, 0, 0))
+        screen.blit(begin_text, (175, 400))
+        screen.blit(welcome_line1, (175, 250))
+        screen.blit(welcome_line2, (175, 310))
+    elif instruction == 5:
+        screen.fill((255,255,255))
+        welcome_line1 = startfont.render("Good Luck", True, (0, 0, 0))
+        begin_text = font3.render("Click anywhere to start", True, (0, 0, 0))
+        screen.blit(begin_text, (175, 400))
+        screen.blit(welcome_line1, (175, 250))
+        
+    else:
+        play = True
+        pygame.mouse.set_visible(False)
 
-    welcome = font.render("No Pain No Game", True, (0, 0, 0))
-    screen.blit(welcome, (150, 250))
-
-    begin_text = font.render("Click anywhere to start", True, (0, 0, 0))
-    screen.blit(begin_text, (150, 300))
-
-    pygame.display.flip()
 
     # Check for mouse click to start the game
     for event in pygame.event.get():
         if event.type == pygame.MOUSEBUTTONDOWN and event.button == 1:
+            instruction += 1
+        elif event.type == pygame.QUIT:
             play = True
-            pygame.mouse.set_visible(False)
-
-
+    pygame.display.update()
 
 
 
@@ -143,3 +183,20 @@ while play:
     pygame.display.flip()
     clock.tick(60)
     pygame.display.update()
+screen.fill((255, 255, 255))
+end= False
+screen.fill((255,255,255))
+welcome = startfont.render("Unfortunately you have perished", True, (0, 0, 0))
+begin_text = font3.render("You survived for {minuteScore} minutes and {timeScore} seconds", True, (0, 0, 0))
+begin_text2 = font3.render("click to end", True, (0, 0, 0))
+screen.blit(begin_text2, (175, 400))
+screen.blit(begin_text, (175, 600))
+screen.blit(welcome, (175, 250))
+pygame.display.update()
+while not end:
+    for event in pygame.event.get():
+        if event.type == pygame.MOUSEBUTTONDOWN and event.button == 1:
+            end = True
+        elif event.type == pygame.QUIT:
+            end = True
+        

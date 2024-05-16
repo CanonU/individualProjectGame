@@ -9,12 +9,13 @@ My goal is to create a reaction based, level up game that increasingly gets more
 
 ### UI and Logic Planning
 ![start](https://github.com/CanonU/individualProjectGame/blob/main/images/StartScreen.png?raw=true)
-![Instruction1](https://github.com/CanonU/individualProjectGame/blob/main/images/StartScreen.png?raw=true)
-![Instruction2](https://github.com/CanonU/individualProjectGame/blob/main/images/StartScreen.png?raw=true)
-![Instruction3](https://github.com/CanonU/individualProjectGame/blob/main/images/StartScreen.png?raw=true)
-![Instruction4](https://github.com/CanonU/individualProjectGame/blob/main/images/StartScreen.png?raw=true)
-![gameplay]()
-![Lose]()
+![Instruction1](https://github.com/CanonU/individualProjectGame/blob/main/images/Instruction1.png?raw=true)
+![Instruction2](https://github.com/CanonU/individualProjectGame/blob/main/images/Instruction2.png?raw=true)
+![Instruction3](https://github.com/CanonU/individualProjectGame/blob/main/images/Instruction3.png?raw=true)
+![Instruction4](https://github.com/CanonU/individualProjectGame/blob/main/images/Instruction4.png?raw=true)
+![Begin](https://github.com/CanonU/individualProjectGame/blob/main/images/Begin.png?raw=true)
+![gameplay](https://github.com/CanonU/individualProjectGame/blob/main/images/GamePlay.png?raw=true)
+![EndScreen](https://github.com/CanonU/individualProjectGame/blob/main/images/EndScreen.png?raw=true)
 ### Class Diagram
 ![classdiagram]()
 ### Start screen

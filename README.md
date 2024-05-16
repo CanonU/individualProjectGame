@@ -9,6 +9,10 @@ My goal is to create a reaction based, level up game that increasingly gets more
 
 ### UI and Logic Planning
 ![start](https://github.com/CanonU/individualProjectGame/blob/main/images/StartScreen.png?raw=true)
+![Instruction1](https://github.com/CanonU/individualProjectGame/blob/main/images/StartScreen.png?raw=true)
+![Instruction2](https://github.com/CanonU/individualProjectGame/blob/main/images/StartScreen.png?raw=true)
+![Instruction3](https://github.com/CanonU/individualProjectGame/blob/main/images/StartScreen.png?raw=true)
+![Instruction4](https://github.com/CanonU/individualProjectGame/blob/main/images/StartScreen.png?raw=true)
 ![gameplay]()
 ![Lose]()
 ### Class Diagram

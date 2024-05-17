@@ -15,6 +15,7 @@ pygame.init()
 score = 0
 current_time = 0
 timer_interval = 75
+total_circles = 10
 circle_count = 10
 Orb_count = 5
 level = 0
@@ -161,6 +162,9 @@ while play:
                 level +=1
                 for _ in range(10):
                     circles.append(Circle())
+                    total_circles += 1
+                print(total_circles)
+                    
                 
 
                 
@@ -193,7 +197,10 @@ screen.fill((255,255,255))
 welcome = startfont.render("Unfortunately you have perished", True, (0, 0, 0))
 begin_text = font3.render("Click to end", True, (0, 0, 0))
 begin_text2 = font3.render(f"You survived for {minuteScore} minutes and {timeScore} seconds", True, (0, 0, 0))
-screen.blit(begin_text2, (175, 400))
+finalcirclecount = font3.render(f"You died with {total_circles} circles in the game, on level {level} with {score} xp", True, (0, 0, 0))
+screen.blit(begin_text2, (175, 450))
+screen.blit(finalcirclecount, (175, 400))
+
 screen.blit(begin_text, (175, 600))
 screen.blit(welcome, (175, 250))
 pygame.display.update()
